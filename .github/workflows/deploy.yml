@@ -27,9 +27,9 @@ jobs:
                 if [[ $GITHUB_REF == 'refs/heads/prod' ]]; then 
                   echo "prod" > .workspace
                 else
-                    echo "staging" > .workspace 
-                fi 
-            - name: Push tp ECR
+                    echo "staging" > .workspace
+                fi
+            - name: Push to ECR
               env:
                 AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
