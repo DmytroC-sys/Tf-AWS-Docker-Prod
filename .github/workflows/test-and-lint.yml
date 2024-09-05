@@ -1,10 +1,6 @@
 ---
     name: Test and Lint
-  
     on:
-      push:
-        branches:
-          - main
       workflow_call:
         secrets:
           DOCKERHUB_USER:
@@ -26,9 +22,9 @@
           - name: Checkout
             uses: actions/checkout@v4
           - name: Test
-            run: docker compose run --rm -c "python manage.py wait_for_db && python manage.py test"
+            run: docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
           - name: Python flake8
-            run: docker compose run --rm sh -c "flake8"
+            run: docker compose run --rm app sh -c "flake8"
       terraform:
         name: Terraform
         runs-on: ubuntu-22.04
@@ -42,10 +38,10 @@
             uses: actions/checkout@v4
           - name: Terraform lint 
             run: |
-              cd infra/
+              cd Infra-TF/
               docker compose run --rm terraform -chdir=deploy/ init -backend=false 
               docker compose run --rm terraform -chdir=setup/ init -backend=false
-              dockercompose run --rm terraform -chdir=setup/ validate
+              docker compose run --rm terraform -chdir=setup/ validate
               docker compose run --rm terraform -chdir=setup/ fmt -check
               docker compose run --rm terraform -chdir=deploy/ validate
               docker compose run --rm terraform -chdir=deploy/ fmt -check

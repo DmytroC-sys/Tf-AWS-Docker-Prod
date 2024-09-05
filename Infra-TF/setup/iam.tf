@@ -39,12 +39,12 @@ data "aws_iam_policy_document" "tf_backend" {
       "dynamodb:DeleteItem"
     ]
 
-    resources = ["arn:aws:dynamodb:*:*:table/${var.tf_state_locking}"]
+    resources = ["arn:aws:dynamodb:us-east-1:891376961380:table/${var.tf_state_locking}"]
   }
 }
 
 resource "aws_iam_policy" "tf_backend" {
-  name        = "${aws_iam_user.cd.name}-tf-s3-dynamoDB"
+  name        = "${aws_iam_user.cd.name}-tf-s3-dynamodb"
   description = "Allow user to use S3 and DynamoDb for TF backand resources"
   policy      = data.aws_iam_policy_document.tf_backend.json
 }
@@ -64,10 +64,10 @@ data "aws_iam_policy_document" "ecr" {
   statement {
     effect = "Allow"
     actions = [
-      "ecr:CompleteLayerUpLoad",
+      "ecr:CompleteLayerUpload",
       "ecr:UploadLayerPart",
-      "ecr:InitialatelayerUpload",
-      "ecr:batchCheckLayerAvailability",
+      "ecr:InitiateLayerUpload",
+      "ecr:BatchCheckLayerAvailability",
       "ecr:PutImage"
     ]
     resources = [
