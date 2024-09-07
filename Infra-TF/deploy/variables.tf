@@ -1,5 +1,5 @@
 variable "prefix" {
-  description = "Prefix for resources in AWS"
+  description = "Prefix for resources in AWS (raa=Recipe app API)"
   default     = "raa"
 }
 
