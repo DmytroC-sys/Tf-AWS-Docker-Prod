@@ -34,7 +34,7 @@ resource "aws_subnet" "public_a" {
 
 }
 resource "aws_route_table" "public_a" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.mainVPC
 
   tags = {
     Name = "${local.prefix}-public-a"
@@ -73,7 +73,7 @@ resource "aws_subnet" "public_b" {
 
 }
 resource "aws_route_table" "public_b" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.mainVPC.id
 
   tags = {
     Name = "${local.prefix}-public-b"
