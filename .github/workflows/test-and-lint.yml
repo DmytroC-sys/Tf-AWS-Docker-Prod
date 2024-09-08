@@ -39,8 +39,7 @@
           - name: Terraform lint 
             run: |
               cd Infra-TF/
-              docker compose run --rm terraform -chdir=deploy/ init -backend=false 
-              docker compose run --rm terraform -chdir=setup/ init -backend=false
+              docker compose run --rm terraform -chdir=deploy/ init -backend=false
               docker compose run --rm terraform -chdir=setup/ validate
               docker compose run --rm terraform -chdir=setup/ fmt -check
               docker compose run --rm terraform -chdir=deploy/ validate
