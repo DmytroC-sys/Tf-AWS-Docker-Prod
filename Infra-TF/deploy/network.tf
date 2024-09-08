@@ -54,7 +54,7 @@ resource "aws_route" "public_internet_acces_a" {
 
 
 ########################################################################
-#### Copy pasdted previous section and channged a to>>b for b block ####
+#### Copy pasdted previous section and channged a to>b for b block #####
 ########################################################################
 
 
