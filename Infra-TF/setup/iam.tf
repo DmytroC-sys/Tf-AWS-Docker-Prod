@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "tf_backend" {
       "dynamodb:DeleteItem"
     ]
 
-    resources = ["arn:aws:dynamodb:us-east-1::table/${var.tf_state_locking}"]
+    resources = ["arn:aws:dynamodb:*:*:table/${var.tf_state_locking}"]
   }
 }
 
