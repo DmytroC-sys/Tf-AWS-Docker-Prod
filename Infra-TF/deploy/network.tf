@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "mainGatew" {
 ########################################################
 
 resource "aws_subnet" "public_a" {
-  vpc_id = aws_vpc.mainVPC
+  vpc_id = aws_vpc.mainVPC.id
   cidr_block = "10.1.1.0/24"
   map_public_ip_on_launch = true
   availability_zone = "${data.aws_region.current.name}a"
@@ -58,7 +58,7 @@ resource "aws_route" "public_internet_access_a" {
 #### Copy paste privious section for public access b ####
 #########################################################
 resource "aws_subnet" "public_b" {
-  vpc_id = aws_vpc.mainVPC
+  vpc_id = aws_vpc.mainVPC.id
   cidr_block = "10.1.2.0/24"
   map_public_ip_on_launch = true
   availability_zone = "${data.aws_region.current.name}b"
