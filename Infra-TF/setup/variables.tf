@@ -1,6 +1,6 @@
 variable "tf_state_bucket" {
   description = "Name of S3 bucket in AWS for storing Tf(TeraForm ) state"
-  default     = "devops-recipe-app-state"
+  default     = "devops-recipe-api-app-terrafrom-lock"
 }
 
 variable "tf_state_locking" {
